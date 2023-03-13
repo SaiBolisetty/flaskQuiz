@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Questions</title>
+  </head>
+  <body>
+    <h1>Add a New Question</h1>
+    <form action="/add_question" method="post">
+      <label for="question_text">Question Text:</label>
+      <br>
+      <textarea name="question_text" id="question_text" rows="5" cols="50" required></textarea>
+      <br>
+      <label for="option1">Option 1:</label>
+      <input type="text" name="option1" id="option1" required>
+      <br>
+      <label for="option2">Option 2:</label>
+      <input type="text" name="option2" id="option2" required>
+      <br>
+      <label for="option3">Option 3:</label>
+      <input type="text" name="option3" id="option3" required>
+      <br>
+      <label for="option4">Option 4:</label>
+      <input type="text" name="option4" id="option4" required>
+      <br>
+      <label for="answer">Correct Answer:</label>
+      <select name="answer" id="answer" required>
+        <option value="">Choose an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+        <option value="option4">Option 4</option>
+      </select>
+      <br>
+      <input type="submit" value="Add Question">
+    </form>
+    <hr>
+    <h1>Quiz Questions</h1>
+    {% for question in questions %}
+    <h3>{{ question.text }}</h3>
+    <ol>
+      <b>{{ question.question }}</b>
+      <li>{{ question.option1 }}</li>
+      <li>{{ question.option2 }}</li>
+      <li>{{ question.option3 }}</li>
+      <li>{{ question.option4 }}</li>
+    </ol>
+    <p>Correct Answer: {{ question.answer }}</p>
+    {% endfor %}
+  </body>
+</html>
